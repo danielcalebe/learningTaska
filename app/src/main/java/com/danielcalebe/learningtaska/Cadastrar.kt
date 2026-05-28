@@ -65,7 +65,7 @@ fun Cadastrar(onRegister: (String) -> Unit, onBack: () -> Unit) {
         ) {
             Row() {
                 IconButton(
-                    onClick = {}
+                    onClick = {onBack()}
                 ) { Icon(Icons.Default.ArrowBack, null) }
                 Column() {
                     Text(
