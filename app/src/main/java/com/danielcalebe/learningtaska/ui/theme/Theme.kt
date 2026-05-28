@@ -27,6 +27,9 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color(0xFF333333),
     onPrimary = Color(0xFF333333),
     onSecondary = Color(0xFF333333),
+    error = Color(0xFFE53935),
+
+    onError = Color(0xFFF7F7F7),
 
 
     /* Other default colors to override
@@ -44,7 +47,7 @@ private val LightColorScheme = lightColorScheme(
 fun LearningTaskaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
