@@ -37,10 +37,9 @@ import androidx.compose.ui.unit.sp
 import com.danielcalebe.learningtaska.ui.theme.LearningTaskaTheme
 
 
-
-
 @Composable
 fun Home(gerarRelatorio: () -> Unit, verKanban: () -> Unit, cadastrar: () -> Unit) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -49,28 +48,39 @@ fun Home(gerarRelatorio: () -> Unit, verKanban: () -> Unit, cadastrar: () -> Uni
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(
-                onClick = {}
-            ) { Icon(Icons.Default.Home, null) }
-            Column() {
-                Text(
-                    "Taska",
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 32.sp
+            Row() {
+                IconButton(
+                    onClick = {}
+                ) { Icon(Icons.Default.ArrowBack, null) }
+                Column() {
+                    Text(
+                        "Taska",
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 32.sp
+                        )
                     )
-                )
-                Text(
-                    "HOME",
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp
-                    ),
-                    modifier = Modifier.padding(start = 4.dp)
-                )
+                    Text(
+                        "HOME",
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp
+                        ),
+                        modifier = Modifier.padding(start = 4.dp)
+                    )
+                }
             }
+            Image(
+                painter = painterResource(R.drawable.logo),
+                null,
+                modifier = Modifier
+                    .size(54.dp)
+                    .alpha(0f),
+            )
         }
 
         Column(
@@ -94,7 +104,7 @@ fun Home(gerarRelatorio: () -> Unit, verKanban: () -> Unit, cadastrar: () -> Uni
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .clickable(onClick = {cadastrar()})
+                        .clickable(onClick = { cadastrar() })
                         .clip(RoundedCornerShape(8.dp))
                         .background(MaterialTheme.colorScheme.primary)
                         .padding(12.dp),
@@ -115,7 +125,7 @@ fun Home(gerarRelatorio: () -> Unit, verKanban: () -> Unit, cadastrar: () -> Uni
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .clickable(onClick = {verKanban()})
+                        .clickable(onClick = { verKanban() })
                         .clip(RoundedCornerShape(8.dp))
                         .background(MaterialTheme.colorScheme.secondary)
                         .padding(12.dp),
@@ -138,7 +148,7 @@ fun Home(gerarRelatorio: () -> Unit, verKanban: () -> Unit, cadastrar: () -> Uni
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .clickable(onClick = {gerarRelatorio()})
+                        .clickable(onClick = { gerarRelatorio() })
                         .clip(RoundedCornerShape(8.dp))
                         .background(MaterialTheme.colorScheme.onSurface)
                         .padding(12.dp),
@@ -168,7 +178,10 @@ fun Home(gerarRelatorio: () -> Unit, verKanban: () -> Unit, cadastrar: () -> Uni
                 painter = painterResource(R.drawable.logo_crop),
                 null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.size(400.dp).offset(120.dp,48.dp).alpha(0.3f)
+                modifier = Modifier
+                    .size(400.dp)
+                    .offset(120.dp, 48.dp)
+                    .alpha(0.3f)
             )
         }
     }

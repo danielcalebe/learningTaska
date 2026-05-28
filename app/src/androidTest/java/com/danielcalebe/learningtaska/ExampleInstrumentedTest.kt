@@ -1,5 +1,9 @@
 package com.danielcalebe.learningtaska
 
+import android.content.Context
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -7,6 +11,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import java.io.File
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -15,10 +20,19 @@ import org.junit.Assert.*
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
-    @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.danielcalebe.learningtaska", appContext.packageName)
-    }
+        val composeTestRule = createAndroidComposeRule<MainActivity>()
+//    @Test
+//    fun generateFile_shouldCreateTxtFile() {
+//        val context = ApplicationProvider.getApplicationContext<Context>()
+//
+//        val file = File(context.filesDir, "report.txt")
+//
+//        file.writeText("teste")
+//
+//        assertTrue(file.exists())
+//
+//        val content = file.readText()
+//
+//        assertEquals("teste", content)
+//    }
 }

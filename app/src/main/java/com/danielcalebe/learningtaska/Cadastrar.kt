@@ -55,29 +55,45 @@ fun Cadastrar(onRegister: (String) -> Unit, onBack: () -> Unit) {
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(
-                onClick = { onBack() }
-            ) { Icon(Icons.Default.ArrowBack, null) }
-            Column() {
-
-                Text(
-                    "Taska", style = MaterialTheme.typography.titleLarge.copy(
-                        fontWeight = FontWeight.Bold, fontSize = 32.sp
+            Row() {
+                IconButton(
+                    onClick = {}
+                ) { Icon(Icons.Default.ArrowBack, null) }
+                Column() {
+                    Text(
+                        "Taska",
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 32.sp
+                        )
                     )
-                )
-                Text(
-                    "CADASTRAR ATIVIDADE", style = MaterialTheme.typography.titleLarge.copy(
-                        fontWeight = FontWeight.Bold, fontSize = 16.sp
-                    ), modifier = Modifier.padding(start = 4.dp)
-                )
+                    Text(
+                        "CADASTRAR ATIVIDADE",
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp
+                        ),
+                        modifier = Modifier.padding(start = 4.dp)
+                    )
+                }
             }
+            Image(
+                painter = painterResource(R.drawable.logo),
+                null,
+                modifier = Modifier
+                    .size(54.dp)
+                    .alpha(0f),
+            )
         }
+
 
         Column(
             modifier = Modifier
@@ -104,7 +120,14 @@ fun Cadastrar(onRegister: (String) -> Unit, onBack: () -> Unit) {
                     modifier = Modifier.fillMaxWidth(),
                     trailingIcon = { Icon(Icons.Default.Task, null) },
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-                    keyboardActions = KeyboardActions(onGo = { onRegister(titulo)})
+                    keyboardActions = KeyboardActions(onDone = {
+                        if (titulo.isEmpty()) {
+                            isError = true
+                        } else {
+                            isError = false
+                            onRegister(titulo)
+                        }
+                    })
                 )
                 Button(
                     onClick = {
